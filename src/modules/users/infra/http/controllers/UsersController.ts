@@ -15,7 +15,7 @@ class UsersController {
 
     const user = await getOneUser.execute({ id });
 
-    return res.json({ user: classToClass(user) });
+    return res.json(classToClass(user));
   }
 
   public async create(req: Request, res: Response): Promise<Response> {
@@ -29,7 +29,7 @@ class UsersController {
       password,
     });
 
-    return res.json({ user: classToClass(user) });
+    return res.json(classToClass(user));
   }
 
   public async update(req: Request, res: Response): Promise<Response> {
@@ -48,7 +48,7 @@ class UsersController {
       old_password,
     });
 
-    return res.json({ user: classToClass(user) });
+    return res.json(classToClass(user));
   }
 
   public async delete(req: Request, res: Response): Promise<Response> {

@@ -1,5 +1,5 @@
 import { injectable, inject } from 'tsyringe';
-import  { classToClass } from 'class-transformer';
+import { classToClass } from 'class-transformer';
 
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import ICacheProvider from '@shared/providers/CacheProvider/models/ICacheProvider';
@@ -21,7 +21,9 @@ class ListProvidersService {
   ) {}
 
   public async execute({ id }: IRequest): Promise<User[]> {
-    let users = await this.cacheProvider.recover<User[]>(`providers-list:${id}`);
+    // let users = await this.cacheProvider.recover<User[]>(`providers-list:${id}`);
+
+    let users;
 
     if (!users) {
       users = await this.usersRepository.findAllProvider({

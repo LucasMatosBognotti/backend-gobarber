@@ -27,7 +27,7 @@ userRouter.post('/', celebrate({
   },
 }), usersController.create);
 
-userRouter.put('/', Authentication, celebrate({
+userRouter.put('/profile', Authentication, celebrate({
   [Segments.BODY]: {
     name: Joi.string().required(),
     email: Joi.string().email().required(),
@@ -39,6 +39,6 @@ userRouter.put('/', Authentication, celebrate({
 
 userRouter.delete('/', Authentication, usersController.delete);
 
-userRouter.patch('/', Authentication, upload.single('avatar'), userAvatarController.update);
+userRouter.patch('/avatar', Authentication, upload.single('avatar'), userAvatarController.update);
 
 export default userRouter;
